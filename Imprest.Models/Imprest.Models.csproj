@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{904112E6-F66A-4C3F-B5DB-BB191B4E2118}</ProjectGuid>
+    <ProjectGuid>{E695684E-651B-4175-B1C2-CCFE3BE36424}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imprest</RootNamespace>
-    <AssemblyName>Imprest</AssemblyName>
+    <RootNamespace>Imprest.Models</RootNamespace>
+    <AssemblyName>Imprest.Models</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,6 +44,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,18 +54,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Imprest\CoreEntity\Model1.cs" />
+    <Compile Include="Imprest\CoreEntity\TransactionReport.cs" />
+    <Compile Include="Imprest\en\Model667.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model667.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imprest\en\Model667.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model667.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imprest\en\Model667.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model667.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Imprest\en\TransactionReport.cs">
+      <DependentUpon>Model667.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Imprest\en\Model667.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model667.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Imprest\en\Model667.edmx.diagram">
+      <DependentUpon>Model667.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Imprest.Models\Imprest.Models.csproj">
-      <Project>{e695684e-651b-4175-b1c2-ccfe3be36424}</Project>
-      <Name>Imprest.Models</Name>
-    </ProjectReference>
+    <Content Include="Imprest\en\Model667.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model667.edmx</DependentUpon>
+      <LastGenOutput>Model667.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Imprest\en\Model667.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model667.edmx</DependentUpon>
+      <LastGenOutput>Model667.cs</LastGenOutput>
+    </Content>
+    <Content Include="sqltext\AccountStatementMasterDelete.txt" />
+    <Content Include="sqltext\insert.txt" />
+    <Content Include="sqltext\TransactionMasterDelete.txt" />
+    <Content Include="sqltext\vouchertypesql.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

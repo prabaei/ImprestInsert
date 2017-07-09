@@ -1,0 +1,26 @@
+
+CREATE TRIGGER [dbo].[TransactionMasterDelete]
+    ON [dbo].[TransactionMaster]
+    FOR DELETE
+	as
+	--insert into DeletedTransactionNo
+	insert into DeletedTransactionNO (TransactionNo)  select  TransactionNo from deleted
+	--delete from AccountTransaction
+	DELETE FROM AccountTransaction WHERE TransactionNo in (SELECT TransactionNo FROM deleted)
+	--delete from chequeTransaction
+	DELETE FROM ChequeTransactions WHERE TransactionNo in (SELECT TransactionNo FROM deleted)
+	--DELETE FROM BRSTransaction
+	DELETE FROM BRSTransaction where TransactionNo in (SELECT TransactionNo FROM deleted)
+	--DELETE FROM NARRATIONTRANSACTION
+	DELETE FROM NarrationTransaction where TransactionNo in (SELECT TransactionNo FROM deleted)
+	--DELETE FROM projectTransaction
+	DELETE FROM ProjectTransaction where TransactionNo in (SELECT TransactionNo FROM deleted)
+	--DELETE FROM recoupmentTransaction
+	DELETE FROM RecoupmentTransaction where TransactionNo in (SELECT TransactionNo FROM deleted)
+	--DELETE FROM SupplierTransaction
+	DELETE FROM SupplierTransaction where TransactionNo in (SELECT TransactionNo FROM deleted)
+	--DELETE FROM voucherDateTransaction
+	DELETE FROM VoucherDateTransactions where TransactionNo in (SELECT TransactionNo FROM deleted)
+
+
+

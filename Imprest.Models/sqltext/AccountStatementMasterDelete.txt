@@ -1,0 +1,9 @@
+
+  CREATE TRIGGER [dbo].[AccountStatementMasterDelete]
+    ON [dbo].[AccountStatementMaster]
+    FOR DELETE
+	as
+	DELETE FROM AccountStatement WHERE AccountTran in (SELECT AccountTran FROM deleted)
+
+
+
